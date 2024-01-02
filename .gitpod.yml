@@ -1,0 +1,11 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: echo "secret" | md5sum | cut -f1 -d ' ' > /workspace/secret.txt
+
+ports:
+  - name: Web App
+    description: The main application web server
+    port: 8080
+    onOpen: open-browser
