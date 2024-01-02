@@ -2,10 +2,17 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: echo "secret" | md5sum | cut -f1 -d ' ' > /workspace/secret.txt
+  - name: Generate Secret
+    init: echo "secret" | md5sum | cut -f1 -d ' ' > /workspace/secret.txt && echo "Secret generated!"
 
 ports:
   - name: Web App
     description: The main application web server
     port: 8080
     onOpen: open-browser
+
+# TRy to use prebuilds to speed up the workspace on initial launch
+jetbrains:
+  intellij:
+    prebuilds:
+      version: stable
