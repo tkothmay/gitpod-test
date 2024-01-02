@@ -3,7 +3,8 @@ image:
 
 tasks:
   - name: Generate Secret
-    init: echo "secret" | md5sum | cut -f1 -d ' ' > /workspace/secret.txt && echo "Secret generated!"
+    # Nicht einfach lokal ausführen, das macht so keinen Spaß!
+    init: echo "secret" | md5sum | cut -f1 -d ' ' > /workspace/secret.txt && clear
 
 ports:
   - name: Web App
@@ -11,7 +12,7 @@ ports:
     port: 8080
     onOpen: open-browser
 
-# TRy to use prebuilds to speed up the workspace on initial launch
+# Try to use prebuilds to speed up the workspace on initial launch
 jetbrains:
   intellij:
     prebuilds:
