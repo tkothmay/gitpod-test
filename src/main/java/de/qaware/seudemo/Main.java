@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        String message = "";
+        String message;
         System.out.println(Main.class.getCanonicalName());
 
         try {
