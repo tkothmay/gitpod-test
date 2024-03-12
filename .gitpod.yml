@@ -10,6 +10,7 @@ ports:
   - name: Web App
     description: The main application web server
     port: 8080
+    visibility: public
     onOpen: open-browser
 
 # Try to use prebuilds to speed up the workspace on initial launch
