@@ -1,6 +1,6 @@
 package de.qaware.seudemo;
 
-import spark.Spark;
+import io.javalin.Javalin;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,6 +12,7 @@ public class Main {
         System.out.println(Main.class.getCanonicalName());
 
         try {
+            // please don't check this file in the terminal, that's no fun!
             message = new String(Files.readAllBytes(Paths.get("/workspace/secret.txt")));
         } catch (IOException e) {
             message = "You are probably not running this in GitPod";
@@ -21,7 +22,9 @@ public class Main {
     }
 
     private static void serve(String message) {
-        Spark.port(8080);
-        Spark.get("/", (req, res) -> message);
+        // Start a super simple Webserver that only returns the specified message
+        Javalin.create()
+                .get("/", ctx -> ctx.result(message))
+                .start(8080);
     }
 }
